@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Gửi Cậu • Chúc Mừng Ngày 20/10 ✨💐</title>
+  <meta name="description" content="Một món quà nhỏ và những lời chúc dịu dàng nhất dành tặng cậu nhân ngày Phụ Nữ Việt Nam 20/10.">
+
+  <!-- Open Graph for Facebook/Zalo/iMessage link preview -->
+  <meta property="og:title" content="Gửi Cậu • Món Quà 20/10 Dành Riêng Cho Cậu 💐">
+  <meta property="og:description" content="Chạm vào bó hoa để mở ra những điều bất ngờ nhé ✨">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Canvas Confetti Library & QRCode.js from unpkg/cdnjs -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+  <!-- Background Petals and Sparks Canvas -->
+  <canvas id="canvas-particles"></canvas>
+  <canvas id="canvas-confetti"></canvas>
+
+  <!-- Top Right Navigation / Controls -->
+  <div class="top-controls">
+    <button id="qr-open-btn" class="icon-btn" title="Lấy mã QR gửi crush">
+      <span>💌</span>
+      <span class="btn-label">Tạo Mã QR</span>
+    </button>
+    <button id="music-toggle-btn" class="icon-btn" title="Bật/Tắt nhạc nền">
+      <span id="music-icon">🎵</span>
+      <span class="btn-label" id="music-text">Nhạc nền: Bật</span>
+    </button>
+  </div>
+
+  <!-- Audio Element (Will use assets/music/bgm.mp3 if present, or synthesizes romantic melody via Web Audio API) -->
+  <audio id="bgm-audio" loop preload="auto">
+    <source src="assets/music/bgm.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ==============================================
+       STAGE 1: CENTRAL BOUQUET (HERO INTERACTION)
+       ============================================== -->
+  <main id="hero-stage" class="hero-stage">
+    <div class="envelope-badge">
+      <span>🌸</span>
+      <span>Dành riêng cho ngày 20/10</span>
+    </div>
+
+    <h1 class="hero-title">Gửi Cậu, Một Ngày Thật Dịu Dàng</h1>
+    <p class="hero-subtitle">Có một bất ngờ nho nhỏ đang đợi cậu khám phá. Hãy chạm vào bó hoa bên dưới nhé!</p>
+
+    <!-- Interactive 3D Bouquet Container -->
+    <div id="bouquet-container" class="bouquet-box">
+      <div class="bouquet-glow"></div>
+      <img src="assets/images/bouquet.svg" alt="Bó hoa tặng cậu" class="bouquet-img" id="bouquet-img">
+    </div>
+
+    <button id="bloom-btn" class="tap-indicator">
+      <span>Chạm để mở quà</span>
+      <span>✨</span>
+    </button>
+  </main>
+
+  <!-- ==============================================
+       STAGE 2: REVEALED WISHES & POLAROIDS CONTENT
+       ============================================== -->
+  <section id="revealed-content" class="revealed-content">
+    
+    <!-- Header Banner -->
+    <div class="top-header-banner">
+      <img src="assets/images/bouquet.svg" alt="Mini bouquet" class="mini-bouquet" id="replay-bloom" title="Chạm để tung thêm hoa!">
+      <h2 class="revealed-title">Happy Vietnamese Women's Day</h2>
+      <p class="revealed-desc">Mong những điều dịu dàng và tuyệt vời nhất sẽ luôn đồng hành cùng cậu hôm nay và mãi về sau ✨</p>
+    </div>
+
+    <!-- Section 1: Wishes Cards Grid (360° Animation) -->
+    <div class="section-headline">
+      <span class="section-line"></span>
+      <h3>Những Lời Chúc Gửi Cậu</h3>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="wishes-grid" id="wishes-grid">
+      <!-- Card 1 -->
+      <div class="wish-card" style="animation-delay: 0.15s;">
+        <div class="wish-card-inner">
+          <div class="wish-icon">🌸</div>
+          <p class="wish-text">Chúc cậu luôn rạng rỡ và mỉm cười thật nhiều, vì nụ cười của cậu làm bừng sáng cả một ngày của ai đó.</p>
+          <div class="wish-footer">Luôn tươi cười nhé ~</div>
+          <span class="tap-heart-hint">Chạm để thả tim ❤️</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="wish-card" style="animation-delay: 0.3s;">
+        <div class="wish-card-inner">
+          <div class="wish-icon">☀️</div>
+          <p class="wish-text">Mong rằng cậu luôn được yêu thương, trân trọng và gặp thật nhiều may mắn, bình an trong cuộc sống.</p>
+          <div class="wish-footer">Vạn điều bình an ✨</div>
+          <span class="tap-heart-hint">Chạm để thả tim ❤️</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="wish-card" style="animation-delay: 0.45s;">
+        <div class="wish-card-inner">
+          <div class="wish-icon">🌷</div>
+          <p class="wish-text">Cậu xứng đáng nhận được tất cả những điều ngọt ngào, dịu dàng và ấm áp nhất trên thế giới này.</p>
+          <div class="wish-footer">Cậu thật đặc biệt 💖</div>
+          <span class="tap-heart-hint">Chạm để thả tim ❤️</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="wish-card" style="animation-delay: 0.6s;">
+        <div class="wish-card-inner">
+          <div class="wish-icon">✨</div>
+          <p class="wish-text">Mỗi ngày có sự xuất hiện của cậu đều trở nên dễ thương và đáng nhớ hơn rất nhiều.</p>
+          <div class="wish-footer">Cảm ơn vì đã có mặt 💌</div>
+          <span class="tap-heart-hint">Chạm để thả tim ❤️</span>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="wish-card" style="animation-delay: 0.75s;">
+        <div class="wish-card-inner">
+          <div class="wish-icon">🎀</div>
+          <p class="wish-text">Hãy luôn tự tin, yêu đời và mãi là chính mình – một cô gái vô cùng tuyệt vời và đáng yêu!</p>
+          <div class="wish-footer">Tỏa sáng theo cách của cậu ⭐</div>
+          <span class="tap-heart-hint">Chạm để thả tim ❤️</span>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="wish-card" style="animation-delay: 0.9s;">
+        <div class="wish-card-inner">
+          <div class="wish-icon">💐</div>
+          <p class="wish-text">Chúc cậu ngày 20/10 ngập tràn hoa tươi, những lời chúc ngọt ngào và những niềm vui bất tận!</p>
+          <div class="wish-footer">Happy 20/10 🎉</div>
+          <span class="tap-heart-hint">Chạm để thả tim ❤️</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: 6 Polaroid Memory Photos (360° Animation) -->
+    <div class="section-headline">
+      <span class="section-line"></span>
+      <h3>Góc Kỷ Niệm Của Cậu</h3>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="polaroid-gallery" id="polaroid-gallery">
+      <!-- Photo 1 -->
+      <div class="polaroid-card" style="animation-delay: 0.3s;" data-caption="Khoảnh khắc đáng yêu nhất ✨">
+        <div class="washi-tape"></div>
+        <div class="photo-wrapper">
+          <img src="assets/images/photo1.jpg" alt="Khoảnh khắc đáng yêu" loading="lazy">
+        </div>
+        <div class="photo-caption">Khoảnh khắc đáng yêu</div>
+        <span class="photo-badge">Chạm để phóng to 🔍</span>
+      </div>
+
+      <!-- Photo 2 -->
+      <div class="polaroid-card" style="animation-delay: 0.45s;" data-caption="Nụ cười làm bừng sáng cả ngày ☀️">
+        <div class="washi-tape"></div>
+        <div class="photo-wrapper">
+          <img src="assets/images/photo2.jpg" alt="Nụ cười tỏa nắng" loading="lazy">
+        </div>
+        <div class="photo-caption">Nụ cười tỏa nắng</div>
+        <span class="photo-badge">Chạm để phóng to 🔍</span>
+      </div>
+
+      <!-- Photo 3 -->
+      <div class="polaroid-card" style="animation-delay: 0.6s;" data-caption="Dịu dàng như nắng thu tháng 10 🌸">
+        <div class="washi-tape"></div>
+        <div class="photo-wrapper">
+          <img src="assets/images/photo3.jpg" alt="Cô gái tháng 10" loading="lazy">
+        </div>
+        <div class="photo-caption">Cô gái tháng 10</div>
+        <span class="photo-badge">Chạm để phóng to 🔍</span>
+      </div>
+
+      <!-- Photo 4 -->
+      <div class="polaroid-card" style="animation-delay: 0.75s;" data-caption="Cậu là điều dịu dàng nhất thế gian 🌷">
+        <div class="washi-tape"></div>
+        <div class="photo-wrapper">
+          <img src="assets/images/photo4.jpg" alt="Điều dịu dàng nhất" loading="lazy">
+        </div>
+        <div class="photo-caption">Điều dịu dàng nhất</div>
+        <span class="photo-badge">Chạm để phóng to 🔍</span>
+      </div>
+
+      <!-- Photo 5 -->
+      <div class="polaroid-card" style="animation-delay: 0.9s;" data-caption="Xinh đẹp và luôn rạng ngời ✨">
+        <div class="washi-tape"></div>
+        <div class="photo-wrapper">
+          <img src="assets/images/photo5.jpg" alt="Xinh đẹp & rạng rỡ" loading="lazy">
+        </div>
+        <div class="photo-caption">Xinh đẹp & rạng rỡ</div>
+        <span class="photo-badge">Chạm để phóng to 🔍</span>
+      </div>
+
+      <!-- Photo 6 -->
+      <div class="polaroid-card" style="animation-delay: 1.05s;" data-caption="Mãi luôn hạnh phúc và mỉm cười nhé 💖">
+        <div class="washi-tape"></div>
+        <div class="photo-wrapper">
+          <img src="assets/images/photo6.jpg" alt="Mãi luôn hạnh phúc" loading="lazy">
+        </div>
+        <div class="photo-caption">Mãi luôn hạnh phúc</div>
+        <span class="photo-badge">Chạm để phóng to 🔍</span>
+      </div>
+    </div>
+
+    <!-- Bottom Actions -->
+    <div class="bottom-actions">
+      <button id="send-love-btn" class="love-btn">
+        <span>Gửi thêm tim cho cậu</span>
+        <span>💖</span>
+      </button>
+      <p class="footer-credits">Made with all my heart for 20/10 🌸</p>
+    </div>
+
+  </section>
+
+  <!-- ==============================================
+       LIGHTBOX MODAL FOR PHOTO ZOOM
+       ============================================== -->
+  <div id="lightbox-modal" class="lightbox-modal">
+    <div class="lightbox-content">
+      <button id="lightbox-close" class="lightbox-close" aria-label="Đóng">✕</button>
+      <img id="lightbox-img" src="" alt="Enlarged photo" class="lightbox-img">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       QR CODE GENERATOR MODAL
+       ============================================== -->
+  <div id="qr-modal" class="qr-modal">
+    <div class="qr-card-container">
+      <button id="qr-close-btn" class="qr-close-btn" aria-label="Đóng">✕</button>
+      <h3 class="qr-card-title">Thiệp Mã QR Gửi Người Ấy 💌</h3>
+      <p class="qr-card-desc">Quét mã QR để mở trang thiệp chúc mừng 20/10 trên điện thoại</p>
+      
+      <div class="qr-canvas-wrapper">
+        <canvas id="qr-export-canvas" width="340" height="420" style="display:none;"></canvas>
+        <div id="qrcode-display"></div>
+      </div>
+
+      <div class="qr-input-group">
+        <label for="qr-url-input">Đường dẫn trang web (URL):</label>
+        <input type="text" id="qr-url-input" placeholder="https://your-page.vercel.app">
+      </div>
+
+      <div class="qr-action-btns">
+        <button id="generate-qr-btn" class="btn-secondary">Tạo Lại Mã</button>
+        <button id="download-qr-card-btn" class="btn-primary">Tải Ảnh Thiệp QR 📥</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

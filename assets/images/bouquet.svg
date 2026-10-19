@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 650" width="100%" height="100%">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="wrapGradBack" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE8E9"/>
+      <stop offset="50%" stop-color="#F7D3D6"/>
+      <stop offset="100%" stop-color="#EBBBC0"/>
+    </linearGradient>
+    <linearGradient id="wrapGradFront" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF0F2"/>
+      <stop offset="100%" stop-color="#F2C4C8"/>
+    </linearGradient>
+    <linearGradient id="leafGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A5C8A7"/>
+      <stop offset="100%" stop-color="#6F9D73"/>
+    </linearGradient>
+    <linearGradient id="leafGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8DB690"/>
+      <stop offset="100%" stop-color="#557F59"/>
+    </linearGradient>
+    <linearGradient id="roseRedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF758F"/>
+      <stop offset="50%" stop-color="#FF4D6D"/>
+      <stop offset="100%" stop-color="#C9184A"/>
+    </linearGradient>
+    <linearGradient id="rosePinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFCCD5"/>
+      <stop offset="50%" stop-color="#FFB3C1"/>
+      <stop offset="100%" stop-color="#FF758F"/>
+    </linearGradient>
+    <linearGradient id="rosePeachGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE5D9"/>
+      <stop offset="50%" stop-color="#FFCAD4"/>
+      <stop offset="100%" stop-color="#F4ACB7"/>
+    </linearGradient>
+    <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFB3BA"/>
+      <stop offset="50%" stop-color="#E27386"/>
+      <stop offset="100%" stop-color="#B84A5E"/>
+    </linearGradient>
+    <!-- Soft Drop Shadow -->
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#854854" flood-opacity="0.18"/>
+    </filter>
+    <filter id="flowerGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <!-- Back Wrapping Paper -->
+    <polygon points="120,280 250,560 380,280 430,220 250,150 70,220" fill="url(#wrapGradBack)" stroke="#E2AEB4" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="80,225 150,290 250,160" fill="#E8B5BB" opacity="0.4"/>
+    <polygon points="420,225 350,290 250,160" fill="#DF9FA7" opacity="0.4"/>
+
+    <!-- Leaves (Foliage / Eucalyptus) -->
+    <g id="leaves">
+      <!-- Left Leaves -->
+      <path d="M120,230 C80,180 90,120 150,140 C170,190 140,220 120,230 Z" fill="url(#leafGrad1)"/>
+      <path d="M110,190 C60,190 70,140 110,155 Z" fill="url(#leafGrad2)"/>
+      <path d="M140,250 C90,260 70,220 120,210 Z" fill="url(#leafGrad1)"/>
+      <!-- Right Leaves -->
+      <path d="M380,230 C420,180 410,120 350,140 C330,190 360,220 380,230 Z" fill="url(#leafGrad1)"/>
+      <path d="M390,190 C440,190 430,140 390,155 Z" fill="url(#leafGrad2)"/>
+      <path d="M360,250 C410,260 430,220 380,210 Z" fill="url(#leafGrad1)"/>
+      <!-- Top Sprigs -->
+      <path d="M230,130 C220,70 250,50 260,110 Z" fill="url(#leafGrad1)"/>
+      <path d="M190,140 C170,90 200,80 210,130 Z" fill="url(#leafGrad2)"/>
+      <path d="M290,140 C320,90 300,70 270,125 Z" fill="url(#leafGrad2)"/>
+      <!-- Baby's breath little white dots -->
+      <g fill="#FFFFFF" opacity="0.85">
+        <circle cx="160" cy="115" r="4.5"/>
+        <circle cx="175" cy="100" r="3.5"/>
+        <circle cx="145" cy="130" r="4"/>
+        <circle cx="335" cy="110" r="4"/>
+        <circle cx="350" cy="95" r="3.5"/>
+        <circle cx="320" cy="130" r="4.5"/>
+        <circle cx="210" cy="75" r="4"/>
+        <circle cx="280" cy="75" r="4"/>
+      </g>
+    </g>
+
+    <!-- Flower Blooms Group -->
+    <g id="flowers" filter="url(#flowerGlow)">
+      <!-- Central Large Rose (Pink/Rose) -->
+      <g transform="translate(250, 235)">
+        <circle cx="0" cy="0" r="48" fill="url(#roseRedGrad)"/>
+        <!-- Petal layers -->
+        <path d="M-35,-15 C-25,-42 25,-42 35,-15 C45,15 15,40 -5,42 C-28,40 -45,12 -35,-15 Z" fill="url(#rosePinkGrad)"/>
+        <path d="M-28,-10 C-18,-32 20,-30 28,-8 C34,14 10,30 -5,30 C-22,30 -34,10 -28,-10 Z" fill="url(#roseRedGrad)"/>
+        <path d="M-18,-5 C-12,-20 14,-20 18,-5 C22,10 8,20 -2,20 C-14,20 -22,8 -18,-5 Z" fill="url(#rosePeachGrad)"/>
+        <!-- Rose Core spiral -->
+        <ellipse cx="0" cy="2" rx="9" ry="8" fill="#A4133C"/>
+        <path d="M-5,1 Q 0,-6 6,0 Q 4,6 -3,4" fill="none" stroke="#FFCCD5" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+
+      <!-- Upper Left Rose (Soft Blush) -->
+      <g transform="translate(180, 185) scale(0.85)">
+        <circle cx="0" cy="0" r="46" fill="url(#rosePinkGrad)"/>
+        <path d="M-32,-12 C-22,-38 22,-38 32,-12 C40,14 12,38 -5,38 C-25,38 -40,10 -32,-12 Z" fill="url(#rosePeachGrad)"/>
+        <path d="M-22,-8 C-14,-26 16,-26 24,-6 C28,12 8,24 -4,24 C-18,24 -28,8 -22,-8 Z" fill="url(#rosePinkGrad)"/>
+        <ellipse cx="0" cy="1" rx="8" ry="7" fill="#C9184A"/>
+        <path d="M-4,0 Q 0,-5 5,0 Q 3,5 -2,3" fill="none" stroke="#FFF0F2" stroke-width="2" stroke-linecap="round"/>
+      </g>
+
+      <!-- Upper Right Rose (Peach Blush) -->
+      <g transform="translate(320, 185) scale(0.85)">
+        <circle cx="0" cy="0" r="46" fill="url(#rosePeachGrad)"/>
+        <path d="M-32,-12 C-22,-38 22,-38 32,-12 C40,14 12,38 -5,38 C-25,38 -40,10 -32,-12 Z" fill="url(#rosePinkGrad)"/>
+        <path d="M-22,-8 C-14,-26 16,-26 24,-6 C28,12 8,24 -4,24 C-18,24 -28,8 -22,-8 Z" fill="url(#roseRedGrad)"/>
+        <ellipse cx="0" cy="1" rx="8" ry="7" fill="#800F2F"/>
+        <path d="M-4,0 Q 0,-5 5,0 Q 3,5 -2,3" fill="none" stroke="#FFE5D9" stroke-width="2" stroke-linecap="round"/>
+      </g>
+
+      <!-- Top Center Peony/Tulip (Cream/White Pearl) -->
+      <g transform="translate(250, 145) scale(0.78)">
+        <circle cx="0" cy="0" r="44" fill="#FFF0F5"/>
+        <path d="M-30,-10 C-20,-34 20,-34 30,-10 C38,12 12,34 -4,34 C-24,34 -38,8 -30,-10 Z" fill="#FFE3E8"/>
+        <path d="M-20,-6 C-12,-22 14,-22 20,-6 C24,10 6,22 -3,22 C-16,22 -24,8 -20,-6 Z" fill="#FFB3C1"/>
+        <circle cx="0" cy="2" r="7" fill="#E27386"/>
+      </g>
+
+      <!-- Lower Left Rose (Pastel Rose) -->
+      <g transform="translate(195, 275) scale(0.72)">
+        <circle cx="0" cy="0" r="44" fill="url(#roseRedGrad)"/>
+        <path d="M-28,-10 C-18,-30 18,-30 28,-10 C35,10 10,30 -4,30 C-22,30 -35,8 -28,-10 Z" fill="url(#rosePinkGrad)"/>
+        <circle cx="0" cy="1" r="7" fill="#590D22"/>
+      </g>
+
+      <!-- Lower Right Rose (Warm Salmon Peach) -->
+      <g transform="translate(305, 275) scale(0.72)">
+        <circle cx="0" cy="0" r="44" fill="url(#rosePeachGrad)"/>
+        <path d="M-28,-10 C-18,-30 18,-30 28,-10 C35,10 10,30 -4,30 C-22,30 -35,8 -28,-10 Z" fill="url(#rosePinkGrad)"/>
+        <circle cx="0" cy="1" r="7" fill="#A4133C"/>
+      </g>
+    </g>
+
+    <!-- Front Wrapping Paper Folds -->
+    <g id="wrapping-front">
+      <!-- Left wrapping fold -->
+      <path d="M90,260 L235,530 L250,560 L200,320 Z" fill="url(#wrapGradFront)" opacity="0.95"/>
+      <path d="M90,260 Q170,300 240,320 L250,560 L205,550 Z" fill="url(#wrapGradBack)" opacity="0.6"/>
+      <!-- Right wrapping fold over left -->
+      <path d="M410,260 L250,560 L265,530 L300,320 Z" fill="url(#wrapGradFront)" opacity="0.95"/>
+      <path d="M410,260 Q330,300 260,320 L250,560 L295,550 Z" fill="url(#wrapGradBack)" opacity="0.6"/>
+      <!-- Center wrapping cone crease -->
+      <path d="M120,290 C180,330 320,330 380,290 L275,540 C265,555 235,555 225,540 Z" fill="url(#wrapGradFront)" stroke="#E8B5BB" stroke-width="1"/>
+    </g>
+
+    <!-- Elegant Satin Ribbon & Bow -->
+    <g id="ribbon" transform="translate(250, 440)">
+      <!-- Left hanging ribbon tail -->
+      <path d="M-10,10 C-30,45 -15,90 -35,130 C-25,132 -5,110 -15,85 C-5,55 0,20 -5,10 Z" fill="url(#ribbonGrad)"/>
+      <!-- Right hanging ribbon tail -->
+      <path d="M10,10 C30,45 15,90 35,130 C25,132 5,110 15,85 C5,55 0,20 5,10 Z" fill="url(#ribbonGrad)"/>
+      <!-- Left Bow Loop -->
+      <path d="M0,0 C-35,-30 -80,-15 -85,15 C-88,40 -40,35 -5,5 Z" fill="url(#ribbonGrad)"/>
+      <path d="M-5,-2 C-30,-20 -60,-10 -65,10 C-67,26 -35,22 -5,3 Z" fill="#FFE5EC" opacity="0.4"/>
+      <!-- Right Bow Loop -->
+      <path d="M0,0 C35,-30 80,-15 85,15 C88,40 40,35 5,5 Z" fill="url(#ribbonGrad)"/>
+      <path d="M5,-2 C30,-20 60,-10 65,10 C67,26 35,22 5,3 Z" fill="#FFE5EC" opacity="0.4"/>
+      <!-- Center Knot -->
+      <ellipse cx="0" cy="2" rx="14" ry="12" fill="#9F2B40"/>
+      <ellipse cx="-1" cy="0" rx="12" ry="10" fill="url(#ribbonGrad)"/>
+      <ellipse cx="-2" cy="-2" rx="6" ry="4" fill="#FFCCD5" opacity="0.6"/>
+    </g>
+  </g>
+
+  <!-- Sparkle Stars Around Bouquet -->
+  <g fill="#FFF" opacity="0.8">
+    <path d="M90,140 Q95,140 95,135 Q95,140 100,140 Q95,140 95,145 Q95,140 90,140 Z"/>
+    <path d="M410,150 Q416,150 416,144 Q416,150 422,150 Q416,150 416,156 Q416,150 410,150 Z"/>
+    <path d="M130,90 Q134,90 134,86 Q134,90 138,90 Q134,90 134,94 Q134,90 130,90 Z"/>
+    <path d="M370,95 Q375,95 375,90 Q375,95 380,95 Q375,95 375,100 Q375,95 370,95 Z"/>
+    <path d="M250,50 Q254,50 254,46 Q254,50 258,50 Q254,50 254,54 Q254,50 250,50 Z"/>
+  </g>
+</svg>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tạo Thiệp Mã QR 20/10 Gửi Crush 💌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    :root {
+      --bg: #FFF5F7;
+      --primary: #FF6584;
+      --text: #3D2C33;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: linear-gradient(135deg, #FFF0F3 0%, #FEE1E8 100%);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .header h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.2rem;
+      color: #3B1B25;
+      margin-bottom: 8px;
+    }
+    .header p {
+      color: #7D5E69;
+      font-size: 14px;
+    }
+    .workspace {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 36px;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 960px;
+      width: 100%;
+    }
+    .control-panel {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(220, 100, 130, 0.12);
+      flex: 1;
+      min-width: 300px;
+      max-width: 440px;
+    }
+    .input-group {
+      margin-bottom: 18px;
+    }
+    .input-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #5D3E49;
+      margin-bottom: 6px;
+    }
+    .input-group input, .input-group select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #E5D0D6;
+      border-radius: 10px;
+      font-size: 14px;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .input-group input:focus, .input-group select:focus {
+      border-color: var(--primary);
+    }
+    .btn-generate {
+      width: 100%;
+      padding: 13px;
+      background: linear-gradient(135deg, #FF6584, #FF8E9E);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(255, 101, 132, 0.35);
+      transition: all 0.2s;
+      margin-top: 6px;
+    }
+    .btn-generate:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 101, 132, 0.45);
+    }
+    .preview-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    #postcard-canvas {
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(180, 80, 105, 0.2);
+      max-width: 100%;
+      height: auto;
+      background: #FFF;
+    }
+    .btn-download {
+      padding: 12px 28px;
+      background: #FFFFFF;
+      color: #D94668;
+      border: 2px solid #FFCCD5;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-download:hover {
+      background: #FFF0F3;
+      border-color: #FF8DA1;
+      transform: translateY(-2px);
+    }
+    .back-link {
+      margin-top: 35px;
+      color: #8C5967;
+      text-decoration: none;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .back-link:hover {
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Bộ Tạo Bưu Thiếp Mã QR 20/10 💌</h1>
+    <p>Tạo một tấm thiệp QR xinh xắn để in ra hoặc gửi tin nhắn mời người ấy mở quà!</p>
+  </div>
+
+  <div class="workspace">
+    <!-- Controls -->
+    <div class="control-panel">
+      <div class="input-group">
+        <label for="input-url">1. Đường link web thiệp của bạn (URL):</label>
+        <input type="text" id="input-url" placeholder="https://your-name.github.io/thiep-20-10" value="">
+      </div>
+
+      <div class="input-group">
+        <label for="input-crush-name">2. Tên hoặc biệt danh của người ấy:</label>
+        <input type="text" id="input-crush-name" placeholder="Gửi Linh / Cô gái nhỏ / Bé yêu..." value="Gửi Cậu ✨">
+      </div>
+
+      <div class="input-group">
+        <label for="input-submessage">3. Lời nhắn gợi mở:</label>
+        <input type="text" id="input-submessage" placeholder="Quét mã để mở món quà bí mật nhé!" value="Quét mã để mở món quà 20/10 bất ngờ nhé 🌸">
+      </div>
+
+      <div class="input-group">
+        <label for="select-theme">4. Tông màu thiệp:</label>
+        <select id="select-theme">
+          <option value="rose">Hồng Rose Pastel (Ngọt ngào, thanh lịch)</option>
+          <option value="peach">Cam Đào Peach Warm (Ấm áp, rực rỡ)</option>
+          <option value="lavender">Tím Lavender Mộng Mơ (Nhẹ nhàng, thơ mộng)</option>
+        </select>
+      </div>
+
+      <button id="btn-update" class="btn-generate">Làm Mới Bưu Thiếp ✨</button>
+    </div>
+
+    <!-- Preview -->
+    <div class="preview-panel">
+      <canvas id="postcard-canvas" width="420" height="560"></canvas>
+      <button id="btn-download" class="btn-download">
+        <span>Tải Ảnh Thiệp QR Về Máy</span>
+        <span>📥</span>
+      </button>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link">← Quay lại trang thiệp tương tác</a>
+
+  <div id="hidden-qr" style="display:none;"></div>
+
+  <script>
+    const canvas = document.getElementById('postcard-canvas');
+    const ctx = canvas.getContext('2d');
+    const inputUrl = document.getElementById('input-url');
+    const inputName = document.getElementById('input-crush-name');
+    const inputSub = document.getElementById('input-submessage');
+    const selectTheme = document.getElementById('select-theme');
+    const btnUpdate = document.getElementById('btn-update');
+    const btnDownload = document.getElementById('btn-download');
+    const hiddenQr = document.getElementById('hidden-qr');
+
+    // Default url
+    const origin = window.location.origin;
+    const path = window.location.pathname.replace('qr-creator.html', 'index.html');
+    inputUrl.value = window.location.href.startsWith('http') ? (origin + path) : 'https://thiep-20-10-crush.vercel.app';
+
+    function renderPostcard() {
+      const url = inputUrl.value.trim() || 'https://thiep-20-10-crush.vercel.app';
+      const crushName = inputName.value.trim() || 'Gửi Cậu ✨';
+      const subMessage = inputSub.value.trim() || 'Quét mã để mở món quà 20/10 bất ngờ nhé 🌸';
+      const theme = selectTheme.value;
+
+      // 1. Generate QR Code
+      hiddenQr.innerHTML = '';
+      const qrColor = theme === 'lavender' ? '#43235A' : (theme === 'peach' ? '#5E2C1A' : '#4A1D2B');
+      new QRCode(hiddenQr, {
+        text: url,
+        width: 190,
+        height: 190,
+        colorDark: qrColor,
+        colorLight: '#FFFFFF',
+        correctLevel: QRCode.CorrectLevel.H
+      });
+
+      setTimeout(() => {
+        const cw = canvas.width;
+        const ch = canvas.height;
+
+        // Colors based on theme
+        let bg1 = '#FFF5F7', bg2 = '#FFE9EE', bg3 = '#FFD8E2', strokeC = '#E8A7B8', titleC = '#3B1B25';
+        if (theme === 'peach') {
+          bg1 = '#FFF8F2'; bg2 = '#FFEADB'; bg3 = '#FFD7C0'; strokeC = '#E8B699'; titleC = '#4D2416';
+        } else if (theme === 'lavender') {
+          bg1 = '#F9F4FF'; bg2 = '#EFE4FF'; bg3 = '#E3D2FF'; strokeC = '#BFA5E8'; titleC = '#2F1845';
+        }
+
+        // Background
+        const grad = ctx.createLinearGradient(0, 0, cw, ch);
+        grad.addColorStop(0, bg1);
+        grad.addColorStop(0.5, bg2);
+        grad.addColorStop(1, bg3);
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, cw, ch);
+
+        // Borders
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.lineWidth = 10;
+        ctx.strokeRect(16, 16, cw - 32, ch - 32);
+
+        ctx.strokeStyle = strokeC;
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(26, 26, cw - 52, ch - 52);
+
+        // Header
+        ctx.textAlign = 'center';
+        ctx.fillStyle = titleC;
+        ctx.font = 'bold 24px "Playfair Display", Georgia, serif';
+        ctx.fillText('CHÚC MỪNG NGÀY 20/10', cw / 2, 70);
+
+        ctx.font = 'bold 22px "Dancing Script", cursive';
+        ctx.fillStyle = '#C93B61';
+        ctx.fillText(crushName, cw / 2, 105);
+
+        // White Frame for QR
+        const qrSize = 210;
+        const qrX = (cw - qrSize) / 2;
+        const qrY = 135;
+
+        ctx.fillStyle = '#FFFFFF';
+        ctx.shadowColor = 'rgba(160, 60, 85, 0.15)';
+        ctx.shadowBlur = 18;
+        ctx.fillRect(qrX, qrY, qrSize, qrSize);
+        ctx.shadowBlur = 0;
+
+        const qrImg = hiddenQr.querySelector('img') || hiddenQr.querySelector('canvas');
+        if (qrImg) {
+          ctx.drawImage(qrImg, qrX + 10, qrY + 10, 190, 190);
+        }
+
+        // Sub message
+        ctx.fillStyle = '#3D2C33';
+        ctx.font = '600 14px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText(subMessage, cw / 2, 385);
+
+        ctx.fillStyle = '#7E5B66';
+        ctx.font = 'italic 13px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Dùng camera điện thoại để quét mã QR', cw / 2, 412);
+
+        // Decorative footer
+        ctx.fillStyle = '#B88B97';
+        ctx.font = '12px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Happy Vietnamese Women\'s Day • 20/10', cw / 2, 470);
+
+        ctx.fillStyle = '#D94668';
+        ctx.font = '18px sans-serif';
+        ctx.fillText('🌸 ✨ 💌 ✨ 🌸', cw / 2, 505);
+
+      }, 100);
+    }
+
+    renderPostcard();
+    btnUpdate.addEventListener('click', renderPostcard);
+
+    btnDownload.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.download = 'thiep-20-10-qr-gui-crush.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+  </script>
+</body>
+</html>
